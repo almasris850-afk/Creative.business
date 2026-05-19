@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السيستم الشامل - أول 1000$</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9fc;
+            color: #1e1e2f;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* شريط العرض */
+        .offer-bar {
+            background: linear-gradient(45deg, #f3b33d, #ff8c42);
+            color: #0b0b1f;
+            text-align: center;
+            padding: 8px 15px;
+            font-weight: bold;
+            font-size: 1rem;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 12px rgba(243,179,61,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .offer-bar i {
+            font-size: 1.3rem;
+        }
+
+        .offer-bar .price-highlight {
+            background: #1a1a3a;
+            color: white;
+            padding: 4px 15px;
+            border-radius: 40px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin: 0 5px;
+            box-shadow: 0 3px 0 #0b0b1f;
+        }
+
+        .offer-bar .btn-buy-small {
+            background: #1a1a3a;
+            color: white;
+            padding: 6px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 0 #0b0b1f;
+        }
+
+        .offer-bar .btn-buy-small:hover {
+            background: #2a2a5a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #0b0b1f;
+        }
+
+        .offer-bar .btn-buy-small:active {
+            transform: translateY(4px);
+            box-shadow: 0 1px 0 #0b0b1f;
+        }
+
+        /* hero section */
+        .hero {
+            background: linear-gradient(145deg, #0b0b1f 0%, #1a1a3a 100%);
+            color: white;
+            border-radius: 40px 40px 40px 40px;
+            padding: 50px 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 25px 40px -15px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "📱💰";
+            font-size: 200px;
+            position: absolute;
+            bottom: -50px;
+            left: -30px;
+            opacity: 0.1;
+            transform: rotate(-10deg);
+            white-space: nowrap;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .hero h1 span {
+            color: #ffd966;
+            display: block;
+            font-size: 2.2rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin-bottom: 15px;
+            opacity: 0.95;
+        }
+
+        .hero .highlight {
+            background: #f3b33d;
+            color: #0b0b1f;
+            display: inline-block;
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.4rem;
+            margin-top: 15px;
+        }
+
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.15);
+            padding: 10px 25px;
+            border-radius: 40px;
+            font-size: 1.1rem;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .badge i {
+            margin-left: 8px;
+            color: #ffd966;
+        }
+
+        /* cards */
+        .section-title {
+            font-size: 2.5rem;
+            margin: 60px 0 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 120px;
+            height: 4px;
+            background: #f3b33d;
+            margin: 15px auto 0;
+            border-radius: 4px;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 25px;
+            padding: 25px 20px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+            border: 1px solid #f0f0f5;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(26,26,58,0.1);
+        }
+
+        .course-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #1a1a3a;
+            border-right: 5px solid #f3b33d;
+            padding-right: 15px;
+        }
+
+        .course-card ul {
+            list-style: none;
+        }
+
+        .course-card li {
+            margin-bottom: 12px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .course-card i {
+            color: #f3b33d;
+            width: 20px;
+            font-size: 1.1rem;
+        }
+
+        /* gifts */
+        .gifts-section {
+            background: #eef2ff;
+            border-radius: 50px;
+            padding: 40px 30px;
+            margin: 50px 0;
+        }
+
+        .gifts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gift-item {
+            background: white;
+            padding: 20px 15px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 1px solid #dce1f0;
+        }
+
+        .gift-item i {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 12px;
+            color: #1a1a3a;
+        }
+
+        /* pricing */
+        .pricing-box {
+            background: linear-gradient(135deg, #fff9e6, #ffffff);
+            border-radius: 70px 70px 70px 70px;
+            padding: 40px;
+            text-align: center;
+            border: 2px dashed #f3b33d;
+            margin: 50px 0;
+            box-shadow: 0 20px 30px rgba(243,179,61,0.1);
+        }
+
+        .old-price {
+            font-size: 2rem;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .new-price {
+            font-size: 5rem;
+            font-weight: 900;
+            color: #1a1a3a;
+            line-height: 1;
+            margin: 15px 0 10px;
+        }
+
+        .btn-buy {
+            background: #1a1a3a;
+            color: white;
+            border: none;
+            padding: 25px 60px;
+            font-size: 2rem;
+            font-weight: bold;
+            border-radius: 80px;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 12px 0 #0b0b1f, 0 10px 25px rgba(0,0,0,0.2);
+            margin: 30px 0 15px;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-buy:hover {
+            background: #2a2a5a;
+            transform: translateY(-2px);
+            box-shadow: 0 14px 0 #0b0b1f, 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-buy:active {
+            transform: translateY(6px);
+            box-shadow: 0 6px 0 #0b0b1f;
+        }
+
+        /* testimonials */
+        .testimonials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 35px;
+            padding: 25px;
+            width: 220px;
+            text-align: center;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.03);
+            border: 1px solid #eee;
+        }
+
+        .testimonial-card .user-icon {
+            font-size: 3.5rem;
+            color: #1a1a3a;
+            opacity: 0.6;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .stars {
+            color: #f3b33d;
+            margin: 10px 0;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            color: #555;
+        }
+
+        /* main image */
+        .main-image {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .main-image img {
+            max-width: 100%;
+            border-radius: 40px;
+            box-shadow: 0 25px 40px rgba(0,0,0,0.15);
+            border: 5px solid white;
+        }
+
+        /* footer */
+        .footer-note {
+            text-align: center;
+            padding: 30px;
+            color: #777;
+            border-top: 1px solid #ddd;
+            margin-top: 50px;
+        }
+
+        /* responsive */
+        @media (max-width: 700px) {
+            .hero h1 { font-size: 2.2rem; }
+            .new-price { font-size: 3.5rem; }
+            .btn-buy { font-size: 1.5rem; padding: 20px 30px; }
+            .section-title { font-size: 2rem; }
+            .offer-bar { font-size: 0.9rem; gap: 8px; }
+            .offer-bar .price-highlight { font-size: 1rem; padding: 2px 10px; }
+            .offer-bar .btn-buy-small { font-size: 0.9rem; padding: 4px 12px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط العرض -->
+    <div class="offer-bar">
+        <i class="fas fa-tag"></i> 
+        <span>عرض خاص لفترة محدودة</span>
+        <span class="price-highlight">19$ فقط</span>
+        <a href="https://www.tekrams.com/product/645bb0ab-6e3d-443b-a5f2-4908415a354d" class="btn-buy-small">
+            <i class="fas fa-shopping-cart"></i> اشتري الآن
+        </a>
+        <i class="fas fa-gem"></i>
+    </div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-content">
+                <h1>مستعد تحول جوالك من أداة تسلية إلى ماكينة أرباح شهرية! <span>💸📱</span></h1>
+                <p>لايهم إذا عندك بزنس فعلي أو مجرد فكرة… هذه الخطة تناسب أي شخص يريد يبدأ من الصفر.</p>
+                <p>هذه دورة عملية حديثة ليست وعود وردية ولا كلام فارغ الحل أبسط مما تتخيل؟ 💡</p>
+                <div class="badge-container">
+                    <span class="badge"><i class="fas fa-check-circle"></i> خطة واضحة ✅</span>
+                    <span class="badge"><i class="fas fa-mobile-alt"></i> الجوال الموجود في يدك الآن 📱</span>
+                    <span class="badge"><i class="fas fa-globe"></i> إنترنت 🌐</span>
+                    <span class="badge"><i class="fas fa-clock"></i> ساعتين يومياً ⏰️</span>
+                </div>
+                <p style="font-size:1.8rem; margin-top:30px;">أنت مو قدام كورس.. أنت قدام سيستم جاهز يختصر عليك شهور: تدريب+ أدوات+ مواقع+ ملفات جاهزة + محتوى + منتج رقمي جاهز+ حقوق إعادة البيع و الربح 100% لك.</p>
+                <p style="font-size:1.3rem;">كل خطوة موضوعة للمبتدئين ولأي شخص يبغى يبدأ بدون خبرة و بدون رأس مال.</p>
+            </div>
+        </div>
+
+        <!-- Courses Section - الآن ثلاثة كورسات -->
+        <h2 class="section-title">ثلاث كورسات عملية في هذا السيستم</h2>
+        <div class="courses-grid">
+            <div class="course-card">
+                <h3>1️⃣ كورس تأسيس البزنس الرقمي</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> تعلم إنشاء منتجك الرقمي الأول حتى لو كنت مبتدئ</li>
+                    <li><i class="fas fa-check"></i> بناء صفحة هبوط احترافية تبيع أوتوماتيكياً 💻</li>
+                    <li><i class="fas fa-check"></i> استخدام الذكاء الاصطناعي لأتمتة 80% من عملك 🤖</li>
+                    <li><i class="fas fa-check"></i> استراتيجيات إنستغرام لزيادة المبيعات يومياً 📈</li>
+                    <li><i class="fas fa-check"></i> صناعة فيديوهات جذابة بدون إظهار وجهك 🎬</li>
+                </ul>
+            </div>
+            <div class="course-card">
+                <h3>2️⃣ كورس احتراف إنستغرام</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> تصميم هوية بصرية لاتنسى 🎨</li>
+                    <li><i class="fas fa-check"></i> كتابة نصوص مقنعة تحول المتابعين إلى عملاء 💬</li>
+                    <li><i class="fas fa-check"></i> استراتيجيات نمو عضوي حقيقية بدون إعلانات مدفوعة 🚫📢</li>
+                    <li><i class="fas fa-check"></i> تحليل الأداء لتحسين مستمر و ضمان مبيعات متزايدة 📊</li>
+                    <li><i class="fas fa-check"></i> الحصول على قوالب محتوى تفجر مبيعاتك 💥</li>
+                </ul>
+            </div>
+            <div class="course-card">
+                <h3>3️⃣ كورس إنشاء كتاب إلكتروني بالذكاء الاصطناعي و طرق بيعه</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> أفكار مطلوبة في السوق لتجهيز أول منتج لك 💡</li>
+                    <li><i class="fas fa-check"></i> كتابة سريعة باستخدام الذكاء الاصطناعي ⏱️</li>
+                    <li><i class="fas fa-check"></i> تصميم احترافي يجذب المشترين 🎨</li>
+                    <li><i class="fas fa-check"></i> تسويق مجاني 100% يضمن جني الأرباح 🆓💵</li>
+                    <li><i class="fas fa-check"></i> دخل يصل إلى 1000$ في أقل من شهر من كتابك الأول 💸</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Gifts / Bonuses -->
+        <div class="gifts-section">
+            <h2 style="font-size:2.5rem; text-align:center;">🎁 هدايا قيمة ستضمن لك النجاح</h2>
+            <div class="gifts-grid">
+                <div class="gift-item"><i class="fas fa-book-open"></i> مكتبة كتب رقمية جاهزة 📚</div>
+                <div class="gift-item"><i class="fas fa-heading"></i> أكثر من 100 عنوان محتوى (Hook) ✍️</div>
+                <div class="gift-item"><i class="fas fa-lightbulb"></i> بنك أفكار لـ 6 أشهر 💡🔄</div>
+                <div class="gift-item"><i class="fas fa-gift"></i> منتج رقمي جاهز للبيع</div>
+                <div class="gift-item"><i class="fas fa-video"></i> مكتبة 100,000 فيديو جاهز 🎬</div>
+                <div class="gift-item"><i class="fas fa-database"></i> قاعدة 15 مليون منتج رقمي أجنبي 📦</div>
+                <div class="gift-item"><i class="fas fa-tools"></i> ملفات وأدوات احترافية ⚡️</div>
+                <div class="gift-item"><i class="fas fa-headset"></i> متابعة ودعم دائم 🤝</div>
+            </div>
+            <p style="text-align:center; margin-top:30px; font-size:1.4rem;"><strong>القيمة الإجمالية: 500$</strong></p>
+        </div>
+
+        <!-- Main Image from the provided link -->
+        <div class="main-image">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGY7NaOX5fgzgRpT4q-UDqiN18q6uGvxFRPKCf0axAPisya7TzOQaIdW1_C_xrQBr3KL9AidyBlZ9XaP89rYEf4reF-vGbXt6AgWzc2vicH8ojMwCvWrdhouiNFJWqb6IqSA6hFHLj6fW3QiTQ2YQbxqx_iPVH9NcqMLXADp3uC0Sqli4VwvsroStMyEfy/s1536/%D8%B7%D8%B1%D9%8A%D9%82%D8%A9%20%D8%A7%D9%84%D9%89%20%D8%A3%D9%88%D9%84%201000$_20260217_091732_%D9%A0%D9%A0%D9%A0%D9%A0.png" alt="السيستم الشامل">
+        </div>
+
+        <!-- Pricing -->
+        <div class="pricing-box">
+            <span class="old-price">$500</span>
+            <div class="new-price">$19</div>
+            <p style="font-size:1.6rem; margin:10px 0 20px;">🔥 السعر اليوم: 19$ فقط</p>
+            <p style="font-size:1.3rem;">🎯 عرض خاص لفترة محدودة. لا تضيع الفرصة! و ابدأ في بناء مشروعك الرقمي اليوم.</p>
+            <p style="font-size:1.8rem; margin:30px 0 10px;">🌟 هذه هي فرصتك للانطلاق!</p>
+            <a href="https://www.tekrams.com/product/645bb0ab-6e3d-443b-a5f2-4908415a354d" class="btn-buy">اشترك الآن</a>
+            <p style="color:#444;">و تمتع بكل هذه الهدايا التي ستضعك على أول طريق النجاح في عالم المنتجات الرقمية.</p>
+        </div>
+
+        <!-- Testimonials -->
+        <h2 class="section-title">ماذا قال عملاؤنا؟</h2>
+        <div class="testimonials">
+            <div class="testimonial-card">
+                <div class="user-icon"><i class="fas fa-user-circle"></i></div>
+                <h4>خالد</h4>
+                <div class="stars">★★★★★</div>
+                <p>"دورة رائعة، فعلاً غيرت مفهومي عن العمل الرقمي. بدأت أحقق أول أرباحي خلال أسبوعين!"</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="user-icon"><i class="fas fa-user-circle"></i></div>
+                <h4>عبد الرحمن</h4>
+                <div class="stars">★★★★★</div>
+                <p>"سيستم متكامل، ما احتجت شيء آخر. الهدايا قيمتها كبيرة جداً. شكراً لكم."</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="user-icon"><i class="fas fa-user-circle"></i></div>
+                <h4>&*monster</h4>
+                <div class="stars">★★★★★</div>
+                <p>"احترافي ومباشر، أنصح كل مبتدئ يبدأ به. الدعم ممتاز."</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="user-icon"><i class="fas fa-user-circle"></i></div>
+                <h4>business89#</h4>
+                <div class="stars">★★★★★</div>
+                <p>"من أفضل الكورسات اللي شفتها، تطبيقي ومربح. فعلاً يستحق."</p>
+            </div>
+        </div>
+
+        <!-- Final CTA -->
+        <div style="text-align: center; margin: 40px 0;">
+            <a href="https://www.tekrams.com/product/645bb0ab-6e3d-443b-a5f2-4908415a354d" class="btn-buy" style="font-size:2.2rem;">اشترك الآن</a>
+            <p style="margin-top:20px; font-size:1.2rem;">عرض لفترة محدودة 🔥</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-note">
+            © 2026 السيستم الشامل - جميع الحقوق محفوظة.
+        </div>
+    </div>
+</body>
+</html>
